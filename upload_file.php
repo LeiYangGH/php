@@ -1,34 +1,78 @@
 <?php
-if ((($_FILES["file"]["type"] == "image/gif")
-|| ($_FILES["file"]["type"] == "image/jpeg")
-|| ($_FILES["file"]["type"] == "image/pjpeg"))
-&& ($_FILES["file"]["size"] < 20000))
+if(!empty($_FILES['file1']['tmp_name']))
+{
+if (($_FILES["file1"]["type"] == "image/jpeg")
+    && ($_FILES["file1"]["size"] < 50000))
   {
-  if ($_FILES["file"]["error"] > 0)
+  if ($_FILES["file1"]["error"] > 0)
     {
-    echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
+    echo "错误: " . $_FILES["file1"]["error"] . "<br />";
     }
   else
     {
-    echo "Upload: " . $_FILES["file"]["name"] . "<br />";
-    echo "Type: " . $_FILES["file"]["type"] . "<br />";
-    echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-    echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
+    echo "上传了菜品1: " . $_FILES["file1"]["name"] . "<br />";
 
-    if (file_exists("upload/" . $_FILES["file"]["name"]))
-      {
-      echo $_FILES["file"]["name"] . " already exists. ";
-      }
-    else
-      {
-      move_uploaded_file($_FILES["file"]["tmp_name"],
-      "upload/" . $_FILES["file"]["name"]);
-      echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
-      }
+    
+      move_uploaded_file($_FILES["file1"]["tmp_name"],
+      "upload/" . "food1");
+      
     }
   }
 else
   {
-  echo "Invalid file";
+  echo "限制上传小于5k的jpg文件";
   }
+}
+
+
+if(!empty($_FILES['file2']['tmp_name']))
+{
+if (($_FILES["file2"]["type"] == "image/jpeg")
+    && ($_FILES["file2"]["size"] < 50000))
+  {
+  if ($_FILES["file2"]["error"] > 0)
+    {
+    echo "错误: " . $_FILES["file2"]["error"] . "<br />";
+    }
+  else
+    {
+    echo "上传了菜品2: " . $_FILES["file2"]["name"] . "<br />";
+
+    
+      move_uploaded_file($_FILES["file2"]["tmp_name"],
+      "upload/" . "food2");
+      
+    }
+  }
+else
+  {
+  echo "限制上传小于5k的jpg文件";
+  }
+}
+
+if(!empty($_FILES['file3']['tmp_name']))
+{
+if (($_FILES["file3"]["type"] == "image/jpeg")
+    && ($_FILES["file3"]["size"] < 50000))
+  {
+  if ($_FILES["file3"]["error"] > 0)
+    {
+    echo "错误: " . $_FILES["file3"]["error"] . "<br />";
+    }
+  else
+    {
+    echo "上传了菜品3: " . $_FILES["file3"]["name"] . "<br />";
+
+    
+      move_uploaded_file($_FILES["file3"]["tmp_name"],
+      "upload/" . "food3");
+      
+    }
+  }
+else
+  {
+  echo "限制上传小于5k的jpg文件";
+  }
+}
+
 ?>
